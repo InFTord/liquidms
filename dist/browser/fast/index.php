@@ -20,7 +20,7 @@
 $netgames = $this->sharedData()->get('netgames');
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <link rel="stylesheet" href="browse/css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
