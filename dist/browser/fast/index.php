@@ -22,82 +22,95 @@ $netgames = $this->sharedData()->get('netgames');
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="browse/css/main.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="browse/js/tablesort.js" async defer></script>
+    <link rel="stylesheet" href="browse/css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="LiquidMS">
+    <meta name="description" content="Federated master server for Sonic Robo Blast 2 ">
+    <meta name="keywords" content="srb2, srb2ms">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <script src="browse/js/tablesort.js" async defer></script>
 </head>
 <body>
 <a href="//github.com/zibonbadi/liquidms"><img src="browse/img/logo.svg"></a>
 <h1>Integrated server browser</h1>
 <pre><?php echo $this->sharedData()->get('motd'); ?></pre>
-<?php if(in_array('v1', $this->sharedData()->get('modules'))){ ?>
-<p>
-Use this server in-game:
-<ol>
-<li>Options</li>
-<li>Server Options</li>
-<li>Advanced</li>
-<li>Server</li>
-<li>Master Server: <a href="<?php
-	$port_str = "";
-	switch($_SERVER['SERVER_PORT']){
-	case 80:
-	case 443:{
-		break;
-	}
-	default:{
-		$port_str = ":{$_SERVER['SERVER_PORT']}";
-		break;
-	}
-	}
-	echo "http://{$_SERVER['SERVER_NAME']}{$port_str}/v1";
-?>">
-<?php
-	$port_str = "";
-	switch($_SERVER['SERVER_PORT']){
-	case 80:
-	case 443:{
-		break;
-	}
-	default:{
-		$port_str = ":{$_SERVER['SERVER_PORT']}";
-		break;
-	}
-	}
-	echo "http://{$_SERVER['SERVER_NAME']}{$port_str}/v1";
-?></a></li>
-</ol>
-</p>
+<?php if (in_array('v1', $this->sharedData()->get('modules'))) { ?>
+    <p>
+        Use this server in-game:
+    <ol>
+        <li>Options</li>
+        <li>Server Options</li>
+        <li>Advanced</li>
+        <li>Server</li>
+        <li>Master Server: <a href="<?php
+            $port_str = "";
+            switch ($_SERVER['SERVER_PORT']) {
+                case 80:
+                case 443:
+                {
+                    break;
+                }
+                default:
+                {
+                    $port_str = ":{$_SERVER['SERVER_PORT']}";
+                    break;
+                }
+            }
+            echo "http://{$_SERVER['SERVER_NAME']}{$port_str}/v1";
+            ?>">
+                <?php
+                $port_str = "";
+                switch ($_SERVER['SERVER_PORT']) {
+                    case 80:
+                    case 443:
+                    {
+                        break;
+                    }
+                    default:
+                    {
+                        $port_str = ":{$_SERVER['SERVER_PORT']}";
+                        break;
+                    }
+                }
+                echo "http://{$_SERVER['SERVER_NAME']}{$port_str}/v1";
+                ?></a></li>
+    </ol>
+    </p>
 <?php } ?>
 <input type="text" id="search" placeholder="Filter servers">
 <table>
-	<thead>
-			<tr>
-			<th data-category="servername">Title</th>
-			<th data-category="host">Host</th>
-			<th data-category="port">Port</th>
-			<th data-category="version">version</th>
-			<th data-category="roomname">Room name</th>
-			<th data-category="origin">Origin</th>
-			</tr>
-	</thead>
-<tbody>
-<?php
-foreach($netgames["data"] as $server){
-	echo "<tr>
-		<td slot=\"field\" data-category=\"servername\">".urldecode($server["servername"])."</td>
+    <thead>
+    <tr>
+        <th data-category="servername">Title</th>
+        <th data-category="host">Host</th>
+        <th data-category="port">Port</th>
+        <th data-category="version">version</th>
+        <th data-category="roomname">Room name</th>
+        <th data-category="origin">Origin</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    foreach ($netgames["data"] as $server) {
+        echo "<tr>
+		<td slot=\"field\" data-category=\"servername\">" . urldecode($server["servername"]) . "</td>
 		<td slot=\"field\" data-category=\"host\">{$server["host"]}</td>
 		<td slot=\"field\" data-category=\"port\">{$server["port"]}</td>
 		<td slot=\"field\" data-category=\"version\">{$server["version"]}</td>
 		<td slot=\"field\" data-category=\"roomname\">{$server["roomname"]}</td>
 		<td slot=\"field\" data-category=\"origin\">{$server["origin"]}</td>
 		</tr>\n";
-}
-?>
-</tbody></table>
+    }
+    ?>
+    </tbody>
+</table>
 <p><a target="_blank"
-href="https://github.com/zibonbadi/liquidms/">LiquidMS</a> version
-1.1.1-dev. &copy; 2021-2022 Zibon Badi and others. LiquidMS is licensed under the <a target="_blank" href="/liquidms/license">GNU Affero General Public License version 3</a></p>
+      href="https://github.com/zibonbadi/liquidms/">LiquidMS</a> version
+    1.1.1-dev. &copy; 2021-2022 Zibon Badi and others. LiquidMS is licensed under the <a target="_blank"
+                                                                                         href="/liquidms/license">GNU
+        Affero General Public License version 3</a></p>
 <p>LiquidMS is part of Liquid Underground. <a href="https://discord.gg/HVTzVfAWG6">Join our Discord!</a></p>
 </body>
 </html>
